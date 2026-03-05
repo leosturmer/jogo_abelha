@@ -19,7 +19,7 @@ class Obj {
 
         var img = new Image ();
         img.src = this.color;
-        canvas.drawImage(img, this.x, this.y);
+        canvas.drawImage(img, this.x, this.y, this.width, this.height);
     };
 
 }
