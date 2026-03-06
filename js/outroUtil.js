@@ -17,41 +17,37 @@ class Obj {
         // canvas.fillStyle = this.color;
         // canvas.fillRect(this.x, this.y, this.width, this.height);
 
-        var img = new Image();
+        var img = new Image ();
         img.src = this.color;
         canvas.drawImage(img, this.x, this.y, this.width, this.height);
-    };
-
-    // Definir imagem de animação e contador interno
-    frame = 1; // Define qual imagem da animação será exibida inicialmente
-    timer = 0; // Contador interno para controlar a velocidade de troca de frames
-
-    animation (nome, limit) {
-        this.timer += 1;
-        if (this.timer > 10) {
-            this.timer = 0;
-            this.frame += 1;
-        } 
-        if (this.frame > limit) { // verifica o limite do frame 
-            this.frame = 1;
-        }
-
-        // Mostra o caminho do arquivo de imagem
-        this.color = "assets/" + nome + this.frame + ".png";
     };
 
 }
 
 class Bee extends Obj {
-
-
     dir = 0;
 
     move () {
         this.x += this.dir; // Movimento da abelha
     };
 
-    
+    // Definir imagem de animação e contador interno
+    frame = 1; // Define qual imagem da animação será exibida inicialmente
+    timer = 0; // Contador interno para controlar a velocidade de troca de frames
+
+    animation () {
+        this.timer += 1;
+        if (this.timer > 10) {
+            this.timer = 0;
+            this.frame += 1;
+        } 
+        if (this.frame > 4) { // verifica o limite do frame 
+            this.frame = 1;
+        }
+
+        // Mostra o caminho do arquivo de imagem
+        this.color = "assets/bee" + this.frame + ".png";
+    }
 }
 
 class Spider extends Obj {
@@ -65,28 +61,5 @@ class Spider extends Obj {
             this.x = Math.random() * (400 - 0);
         };
 
-    }
-}
-
-class Bg extends Obj {
-    move(speed, limit, pos) {
-        this.y += speed;
-        
-        if (this.y > limit) {
-            this.y = pos;
-        }
-    }
-}
-
-class Flower extends Spider {
-
-}
-
-class Text {
-    draw(text, x, y, color) {
-        canvas.font = "40px Arial"
-        canvas.fillStyle = color;
-
-        canvas.fillText(text, x, y);
     }
 }
