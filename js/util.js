@@ -43,14 +43,23 @@ class Obj {
 }
 
 class Bee extends Obj {
-
-
     dir = 0;
 
     move () {
         this.x += this.dir; // Movimento da abelha
     };
 
+    collide(obj) {
+        if (this.x > obj.x + obj.width &&
+            this.x + this.width > obj.x &&
+            this.y < obj.y + obj.height &&
+            this.y + this.height > obj.y
+        ) {
+            console.log("Colidiu!");
+        }else{
+            console.log("Não colidiu!");
+        }
+    };
     
 }
 

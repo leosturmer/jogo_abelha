@@ -13,6 +13,10 @@ var bg2 = new Bg(0, -900, 500, 900, "assets/bg.png");
 
 var flower = new Flower(0, 0, 50, 50, "assets/flower1.png");
 
+var text_points = new Text();
+var text_lifes = new Text();
+
+
 // Os "escutadores" de eventos (Event Listeners)
 // Configurando teclas de navegabilidade
 
@@ -47,6 +51,9 @@ function draw () {
     bee.draw();
     spider.draw();
     flower.draw();    
+
+    text_points.draw("0", 240, 100, "white");
+    text_lifes.draw("3", 40, 100, "red");
 
 };
 
