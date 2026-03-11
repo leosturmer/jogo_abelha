@@ -40,24 +40,41 @@ class Obj {
         this.color = "assets/" + nome + this.frame + ".png";
     };
 
+    collide() { // Serve apenas par chamar o collide() em qualquer objeto 
+
+    };
+
 }
 
 class Bee extends Obj {
     dir = 0;
+    lifes = 3;
+    pts = 0;
 
-    move () {
-        this.x += this.dir; // Movimento da abelha
+    move () {   // Movimento da abelha
+        this.x += this.dir;
+
+        if (this.x <= 0) {
+            this.x = 0;
+            
+        }        
+
+        if (this.x >= 400) {
+            this.x = 400;
+        } 
+
     };
 
     collide(obj) {
-        if (this.x > obj.x + obj.width &&
+        if (this.x < obj.x + obj.width &&
             this.x + this.width > obj.x &&
             this.y < obj.y + obj.height &&
             this.y + this.height > obj.y
         ) {
-            console.log("Colidiu!");
+        
+            return true;
         }else{
-            console.log("Não colidiu!");
+            return false;
         }
     };
     
@@ -75,6 +92,12 @@ class Spider extends Obj {
         };
 
     }
+
+    respaw () {
+        this.y = -300;
+        this.x = Math.random() * (400 - 0);
+
+    }
 }
 
 class Bg extends Obj {
@@ -88,7 +111,7 @@ class Bg extends Obj {
 }
 
 class Flower extends Spider {
-
+    // respf
 }
 
 class Text {
